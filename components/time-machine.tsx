@@ -56,7 +56,8 @@ function TimeMachineCard({
   const filter = useTransform(blur, (b) => (b > 0 ? `blur(${b}px)` : "none"))
 
   const game = GAMES[card.gameIndex]
-  const src = `/thumbnails/${game.id}.png`
+  const basePath = process.env.NODE_ENV === 'production' ? '/GameHub' : ''
+  const src = `${basePath}/thumbnails/${game.id}.png`
   const image = <img alt="" src={src} className="w-full h-full object-contain" />
 
   const isActive = card.index === currentIndex
